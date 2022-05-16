@@ -211,13 +211,18 @@ class Zlapp(Fudan):
             print("◉正在识别验证码......")
             code = self.validate_code()
             print("◉验证码为:", code)
+            #import pdb; pdb.set_trace()
+            if(city=="上海市"):
+                area = " ".join((city, district))
+            else:
+                area = " ".join((province, city, district))
             self.last_info.update(
                 {
                     "tw": "13",
                     "province": province,
                     "city": city,
-                    "area": " ".join((province, city, district)),
-                    #"sfzx": "1",  # 是否在校
+                    "area": area,
+                    "sfzx": "0",  # 是否在校
                     #"fxyy": "",  # 返校原因
                     "code": code,
                 }
